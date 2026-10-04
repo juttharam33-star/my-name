@@ -8,6 +8,7 @@ import Gallery from './Gallery';
 import Quiz from './Quiz';
 
 
+
 function App() {
   return (
     <Router>

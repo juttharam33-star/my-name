@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const heroImage =
     "https://i.pinimg.com/736x/17/17/a4/1717a488f4b23f94e248bcab9b8ee8fb.jpg";
 
@@ -101,19 +103,75 @@ const Home = () => {
           </div>
 
 
-          {/* Mobile menu button */}
-
-          <button
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white md:hidden"
-            aria-label="Open menu"
-          >
-            <span className="text-xl">
-              ☰
-            </span>
-          </button>
-
+      {/* Mobile menu button */}
+<button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white"
+  aria-label="Open menu"
+>
+  <span className="text-xl">
+    {menuOpen ? "✕" : "☰"}
+  </span>
+</button>
         </div>
 
+
+{/* Mobile navigation menu */}
+{menuOpen && (
+  <div className="absolute left-0 top-full z-50 w-full border-t border-white/10 bg-black/95 px-6 py-6 backdrop-blur-md md:hidden">
+    <div className="flex flex-col gap-5">
+
+      <Link
+        to="/"
+        onClick={() => setMenuOpen(false)}
+        className="text-lg font-medium text-white transition hover:text-red-500"
+      >
+        Home
+      </Link>
+
+      <Link
+        to="/characters"
+        onClick={() => setMenuOpen(false)}
+        className="text-lg font-medium text-white transition hover:text-red-500"
+      >
+        Characters
+      </Link>
+
+      <Link
+        to="/episode"
+        onClick={() => setMenuOpen(false)}
+        className="text-lg font-medium text-white transition hover:text-red-500"
+      >
+        Episodes
+      </Link>
+
+      <Link
+        to="/story"
+        onClick={() => setMenuOpen(false)}
+        className="text-lg font-medium text-white transition hover:text-red-500"
+      >
+        Story
+      </Link>
+
+      <Link
+        to="/gallery"
+        onClick={() => setMenuOpen(false)}
+        className="text-lg font-medium text-white transition hover:text-red-500"
+      >
+        Gallery
+      </Link>
+
+      <Link
+        to="/quiz"
+        onClick={() => setMenuOpen(false)}
+        className="text-lg font-medium text-white transition hover:text-red-500"
+      >
+        Quiz
+      </Link>
+
+    </div>
+  </div>
+)}
       </nav>
 
 
